@@ -53,7 +53,7 @@ kafka-topics.bat --create --topic my-first-topic -zookeeper localhost:2181 --rep
 Example:  
 The below command creates a topic called **my-first-topic**.
 ```
-./kafka-topics.sh --create --topic mytopic -zookeeper localhost:2181 --replication-factor 1 --partitions 1
+./kafka-topics.sh --create --topic my-first-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 1
 ```
 
 ## How to instantiate a Console Producer?
@@ -99,7 +99,7 @@ kafka-console-consumer.bat --zookeeper localhost:2181 --topic my-first-topic --f
 
 Example:  
 ```
-./kafka-console-consumer.sh --zookeeper localhost:2181 --topic mytopic --from-beginning
+./kafka-console-consumer.sh --zookeeper localhost:2181 --topic my-first-topic --from-beginning
 ```
 
 
