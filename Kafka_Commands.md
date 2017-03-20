@@ -41,7 +41,7 @@ kafka-topics.bat --create --topic <topic-name> -zookeeper localhost:2181 --repli
 Example:  
 
 ```
-kafka-topics.bat --create --topic my-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 1.
+kafka-topics.bat --create --topic my-first-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 1.
 ```
 
 **MAC:**  
@@ -51,7 +51,7 @@ kafka-topics.bat --create --topic my-topic -zookeeper localhost:2181 --replicati
 ```
 
 Example:  
-The below command creates a topic called **mytopic**.
+The below command creates a topic called **my-first-topic**.
 ```
 ./kafka-topics.sh --create --topic mytopic -zookeeper localhost:2181 --replication-factor 1 --partitions 1
 ```
@@ -65,7 +65,7 @@ kafka-console-producer.bat --broker-list localhost:9092 --topic <topic-name>
 
 Example:  
 ```
-kafka-console-producer.bat --broker-list localhost:9092 --topic my_topic
+kafka-console-producer.bat --broker-list localhost:9092 --topic my-first-topic
 ```
 
 **MAC:**  
@@ -76,7 +76,7 @@ kafka-console-producer.bat --broker-list localhost:9092 --topic my_topic
 Example :
 
 ```
-./kafka-console-producer.sh --broker-list localhost:9092 --topic my_topic
+./kafka-console-producer.sh --broker-list localhost:9092 --topic my-first-topic
 ```
 
 ## How to instantiate a Console Consumer?
@@ -88,7 +88,7 @@ kafka-console-producer.bat --broker-list localhost:9092 --topic <topic-name>
 
 Example:  
 ```
-kafka-console-consumer.bat --zookeeper localhost:2181 --topic my_topic --from-beginning.
+kafka-console-consumer.bat --zookeeper localhost:2181 --topic my-first-topic --from-beginning.
 
 ```
 
