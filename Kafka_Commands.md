@@ -34,6 +34,15 @@ kafka-server-start.bat ..\..\config\server.properties
 ```
 
 ## How to create a topic ?
+**Windows**
+```
+kafka-topics.bat --create --topic <topic-name> -zookeeper localhost:2181 --replication-factor 1 --partitions 1.
+```
+Example:  
+
+```
+kafka-topics.bat --create --topic my-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 1.
+```
 
 **MAC:**  
 ```
@@ -49,6 +58,16 @@ The below command creates a topic called **mytopic**.
 
 ## How to instantiate a Console Producer?
 
+**Windows:**
+```
+kafka-console-producer.bat --broker-list localhost:9092 --topic <topic-name>
+```
+
+Example:  
+```
+kafka-console-producer.bat --broker-list localhost:9092 --topic my_topic
+```
+
 **MAC:**  
 ```
 ./kafka-console-producer.sh --broker-list localhost:9092 --topic <topic-name>
@@ -57,10 +76,21 @@ The below command creates a topic called **mytopic**.
 Example :
 
 ```
-./kafka-console-producer.sh --broker-list localhost:9092 --topic mytopic
+./kafka-console-producer.sh --broker-list localhost:9092 --topic my_topic
 ```
 
 ## How to instantiate a Console Consumer?
+
+**Windows:**
+```
+kafka-console-producer.bat --broker-list localhost:9092 --topic <topic-name>
+```
+
+Example:  
+```
+kafka-console-consumer.bat --zookeeper localhost:2181 --topic my_topic --from-beginning.
+
+```
 
 **MAC**  
 ```
