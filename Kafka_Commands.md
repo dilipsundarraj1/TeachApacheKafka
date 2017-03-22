@@ -27,7 +27,7 @@ kafka-server-start.bat ..\..\config\server.properties
 ./kafka-server-start.sh ../config/server.properties
 ```
 
-## How to display the list of topics in a broker ?
+## How to check the configuration of all the topics in a broker ?
 
 ```
 ./kafka-topics.sh --describe --zookeeper localhost:2181
