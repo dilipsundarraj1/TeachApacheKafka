@@ -1,5 +1,11 @@
 # Kafka Commands
 
+## How to download Kafka ?
+
+```
+curl "http://apache.mirrors.tds.net/kafka/0.10.2.0/kafka_2.11-0.10.2.0.tgz" | tar xz
+```
+
 ## How to start a zookeeper ?
 
 **Windows:**
@@ -102,6 +108,11 @@ Example:
 ./kafka-console-consumer.sh --zookeeper localhost:2181 --topic my-first-topic --from-beginning
 ```
 
+## How to delete a topic?
+
+```
+./kafka-topics.sh --delete --zookeeper localhost:2181 --topic your_topic_name
+```
 
 ## How to kill the Broker Process?
 
