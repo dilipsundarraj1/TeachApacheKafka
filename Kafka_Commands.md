@@ -3,7 +3,7 @@
 ## How to download Kafka ?
 
 ```
-curl "http://apache.mirrors.tds.net/kafka/0.10.2.0/kafka_2.11-0.10.2.0.tgz" | tar xz
+curl "http://mirror.metrocast.net/apache/kafka/0.10.2.0/kafka_2.12-0.10.2.0.tgz" | tar xz
 ```
 
 ## How to start a zookeeper ?
