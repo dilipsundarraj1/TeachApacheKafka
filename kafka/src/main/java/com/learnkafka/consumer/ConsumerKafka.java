@@ -15,7 +15,7 @@ public static void main(String[] args) {
 		properties.put("bootstrap.servers", "localhost:9092");
 		properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 		properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-		properties.put("group.id","test");
+		properties.put("group.id","test1");
 		
 		KafkaConsumer< String, String> consumer=new KafkaConsumer<String, String>(properties);
 		

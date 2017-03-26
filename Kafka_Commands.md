@@ -39,6 +39,17 @@ kafka-server-start.bat ..\..\config\server.properties
 ./kafka-topics.sh --describe --zookeeper localhost:2181
 ```
 
+## How to check the configuration of a particular topic?
+**Windows**
+
+```
+kafka-topics.bat --describe --topic replicate_topic --zookeeper localhost:2181
+```
+**MAC:**  
+```
+./kafka-topics.sh --describe --topic replicate_topic --zookeeper localhost:2181
+```
+
 ## How to create a topic ?
 **Windows**
 ```
