@@ -114,6 +114,27 @@ Example:
 ./kafka-topics.sh --delete --zookeeper localhost:2181 --topic your_topic_name
 ```
 
+## How to alter the configuration of a topic ?
+
+**Windows:**
+
+```
+kafka-topics.bat --zookeeper localhost:2181 --alter --topic <topic-name> --partitions 4
+```
+
+```
+kafka-topics.bat --zookeeper localhost:2181 --alter --topic demo-topic --partitions 4
+```
+
+**MAC**  
+
+```
+./kafka-topics.sh --zookeeper localhost:2181 --alter --topic <topic-name> --partitions 4
+```
+
+```
+./kafka-topics.sh --zookeeper localhost:2181 --alter --topic demo-topic --partitions 4
+```
 ## How to kill the Broker Process?
 
 Step 1:   
