@@ -1,4 +1,4 @@
-package paritioner;
+package com.learnkafka.paritioner;
 
 import java.util.Map;
 

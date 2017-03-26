@@ -1,4 +1,4 @@
-package com.learnkafka;
+package com.learnkafka.producer;
 
 import java.util.Properties;
 
@@ -17,8 +17,8 @@ public class ProducerKafka {
 		
 			try {
 			
-			for(int i=50;i<100;i++){
-				myProducer.send(new  ProducerRecord<String, String>("my-fifth-topic", 0,"message 1", "Message Value : " + Integer.toString(i)));
+			for(int i=49;i<99;i++){
+				myProducer.send(new  ProducerRecord<String, String>("my-fifth-topic","message 1", "Message Value : " + Integer.toString(i)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
