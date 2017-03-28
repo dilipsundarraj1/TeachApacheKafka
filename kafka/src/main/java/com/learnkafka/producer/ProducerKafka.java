@@ -17,8 +17,8 @@ public class ProducerKafka {
 		
 			try {
 			
-			for(int i=49;i<99;i++){
-				myProducer.send(new  ProducerRecord<String, String>("my-fifth-topic","message 1", "Message Value : " + Integer.toString(i)));
+			for(int i=1;i<250;i++){
+				myProducer.send(new  ProducerRecord<String, String>("my-fifth-topic", "Message Value : " + Integer.toString(i)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -36,7 +36,7 @@ public class ConsumerKafkaManualOffset {
 
 					System.out.println("Record read in KafkaConsumerApp : " +  record.toString());
 
-					//consumer.commitSync();
+					consumer.commitSync();
 				}
 			}
 
