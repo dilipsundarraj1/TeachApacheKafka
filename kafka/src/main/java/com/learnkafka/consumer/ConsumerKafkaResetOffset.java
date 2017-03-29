@@ -20,25 +20,26 @@ public class ConsumerKafkaResetOffset {
 
 		KafkaConsumer< String, String> consumer=new KafkaConsumer<String, String>(properties);
 
-		String topic = "sixth-topic";
+		String topic = "demo-reset-topic";
+		
 
 		ArrayList<String> topics=new ArrayList<String>();
 		topics.add(topic);
 
 		consumer.subscribe(topics); // You can subscribe to any number of topics.
 		
-		TopicPartition parition = new TopicPartition(topic, 0);
-		boolean flag=false;
+//		TopicPartition parition = new TopicPartition(topic, 0);
+//		boolean flag=false;
 		try {
 
 			while(true){
 
 				ConsumerRecords<String, String> records = consumer.poll(1000);
 				
-				if(!flag){
-					consumer.seek(parition, 0);
-					flag = true;
-				}
+//				if(!flag){
+//					consumer.seek(parition, 0);
+//					flag = true;
+//				}
 
 				for(ConsumerRecord<String, String> record : records){
 
