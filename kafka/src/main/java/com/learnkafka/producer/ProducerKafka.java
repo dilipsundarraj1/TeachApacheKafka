@@ -19,6 +19,7 @@ public class ProducerKafka {
 			
 			for(int i=1;i<250;i++){
 				myProducer.send(new  ProducerRecord<String, String>("my-fifth-topic", "Message Value : " + Integer.toString(i)));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
