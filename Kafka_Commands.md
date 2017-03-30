@@ -34,7 +34,13 @@ kafka-server-start.bat ..\..\config\server.properties
 ```
 
 ## How to check the configuration of all the topics in a broker ?
+**Windows**
 
+```
+kafka-topics.bat --describe --zookeeper localhost:2181
+```
+
+**MAC:**
 ```
 ./kafka-topics.sh --describe --zookeeper localhost:2181
 ```
