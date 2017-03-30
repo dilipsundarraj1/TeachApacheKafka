@@ -127,6 +127,14 @@ Example:
 
 ## How to delete a topic?
 
+**Windows**
+
+```
+kafka-topics.bat --delete --zookeeper localhost:2181 --topic your_topic_name
+```
+
+**MAC:**
+
 ```
 ./kafka-topics.sh --delete --zookeeper localhost:2181 --topic your_topic_name
 ```
