@@ -146,6 +146,118 @@ kafka-topics.bat --zookeeper localhost:2181 --alter --topic demo-topic --partiti
 ```
 ./kafka-topics.sh --zookeeper localhost:2181 --alter --topic demo-topic --partitions 4
 ```
+
+## How to enable security in Kafka using SSL ?
+
+### SSL Set up in KAFKA BROKER:
+
+Step 1:  
+**Generate SSL key and Certificate for broker:**  
+
+Keystore -> which stores each machine’s own identity.  
+
+Here we are creating the keystore file **server.keystore.jks** that stores the Certificate.  
+The validity of Certificate is given as 365 days below.  
+
+```
+keytool -keystore server.keystore.jks -alias localhost -validity 365 -genkey
+```
+
+Step 2:   
+
+**Creating your own CA:**  
+Here we are creating a Certificate Authority which is responsible for signing certificates.  
+We will add these certs to the **server.keystore.jks** file and **client.truststore.jks** that we will be creating in a while.  
+
+```
+openssl req -new -x509 -keyout ca-key -out ca-cert -days 365
+```
+
+Step 3:
+
+**Add Generated CA to the server.keystore.jks file**  
+
+```
+keytool -keystore server.truststore.jks -alias CARoot -import -file ca-cert
+
+```
+
+Step 4:  
+
+**Add the SSL in server.properties file of Kafka distribution**  
+
+The below setting will make sure that the broker will authenticate the clients (Kafka Consumers) who are trying to access the broker.  
+
+```
+listeners=SSL://localhost:9092
+
+advertised.listeners=SSL://localhost:9092
+
+
+security.inter.broker.protocol = SSL
+ssl.client.auth=required
+
+ssl.keystore.location=<path>/server.keystore.jks
+ssl.keystore.password=changeit
+ssl.key.password=changeit
+ssl.truststore.location=<path>/server.truststore.jks
+ssl.truststore.password=changeit
+ssl.keystore.type = JKS
+ssl.truststore.type = JKS
+```
+
+Step 5:  
+
+Truststore  -> Client stores all the certificates that the client should trust.
+
+Here we will sign the truststore file using the CA that we generated in step 2.  
+
+```
+keytool -keystore client.truststore.jks -alias CARoot -import -file ca-cert
+
+```
+
+Step 6:  
+
+Signing the Certificate:  
+
+```
+keytool -keystore server.keystore.jks -alias localhost -certreq -file cert-file
+```
+Then sign it with the CA:  
+
+```
+openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:kafka123
+
+keytool -keystore server.keystore.jks -alias CARoot -import -file ca-cert
+keytool -keystore server.keystore.jks -alias localhost -import -file cert-signed
+
+```
+
+Step 7:
+
+Run the below command to check servers keystore and truststore are set up correctly.
+
+```
+openssl s_client -debug -connect localhost:9093 -tls1
+```
+
+With this we came to the ends of Setting up the SSL in **Kafka Broker**.
+
+### Kafka Console Producer and Consumer using SSL:
+
+**Console Producer:**
+```
+./kafka-console-producer.sh --broker-list localhost:9092 --topic test --producer.config ../client-ssl.properties
+```
+**Console Consumer:**
+```
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning --new-consumer --consumer.config ../client-ssl.properties
+
+```
+
+
+
 ## How to kill the Broker Process?
 
 Step 1:   
