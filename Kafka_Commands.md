@@ -198,8 +198,7 @@ keytool -keystore server.truststore.jks -alias CARoot -import -file ca-cert
 
 Step 4:  
 
-Signing the Certificate:  
-Sign all certificates in the keystore with the CA we generated.  
+**Sign all certificates in the keystore with the CA we generated.**  
 
 Export the certificate in to the keystore.  
 
