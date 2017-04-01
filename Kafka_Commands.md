@@ -189,7 +189,7 @@ openssl req -new -x509 -keyout ca-key -out ca-cert -days 365
 
 Step 3:
 
-**Add Generated CA to the server.keystore.jks file**  
+**Here we will generate the truststore**  
 
 ```
 keytool -keystore server.truststore.jks -alias CARoot -import -file ca-cert
@@ -197,6 +197,25 @@ keytool -keystore server.truststore.jks -alias CARoot -import -file ca-cert
 ```
 
 Step 4:  
+
+Signing the Certificate:  
+Sign all certificates in the keystore with the CA we generated.  
+
+Export the certificate in to the keystore.  
+
+```
+keytool -keystore server.keystore.jks -alias localhost -certreq -file cert-file
+```
+Then sign it with the CA:  
+
+```
+openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:kafka123
+
+keytool -keystore server.keystore.jks -alias CARoot -import -file ca-cert
+keytool -keystore server.keystore.jks -alias localhost -import -file cert-signed
+
+```
+Step 5:    
 
 **Add the SSL in server.properties file of Kafka distribution**  
 
@@ -220,41 +239,15 @@ ssl.keystore.type = JKS
 ssl.truststore.type = JKS
 ```
 
-Step 5:  
-
-Truststore  -> Client stores all the certificates that the client should trust.
-
-Here we will sign the truststore file using the CA that we generated in step 2.  
-
-```
-keytool -keystore client.truststore.jks -alias CARoot -import -file ca-cert
-
-```
-
 Step 6:  
-
-Signing the Certificate:  
-
-```
-keytool -keystore server.keystore.jks -alias localhost -certreq -file cert-file
-```
-Then sign it with the CA:  
-
-```
-openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:kafka123
-
-keytool -keystore server.keystore.jks -alias CARoot -import -file ca-cert
-keytool -keystore server.keystore.jks -alias localhost -import -file cert-signed
-
-```
-
-Step 7:
 
 Run the below command to check servers keystore and truststore are set up correctly.
 
 ```
 openssl s_client -debug -connect localhost:9093 -tls1
 ```
+
+
 
 With this we came to the ends of Setting up the SSL in **Kafka Broker**.
 
