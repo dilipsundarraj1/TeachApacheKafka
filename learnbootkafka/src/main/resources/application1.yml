@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  profiles: dev
+
+message.response:   Hello from DEV spring boot properties
+
+---
+
+spring:
+  profiles: stage
+
+message.response:   Hello from STAGE spring boot properties
+
+---
+
+spring:
+  profiles: prod
+
+message.response:   Hello from PROD spring boot properties
+
+
+---
