@@ -42,14 +42,7 @@ public class KafkaConfig {
 	      ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 	      factory.setConsumerFactory(consumerFactory());
 	      factory.getContainerProperties().setPollTimeout(3000);
-	      factory.setConcurrency(1);
 	      factory.getContainerProperties().setAckMode(AbstractMessageListenerContainer.AckMode.MANUAL);
-	      factory.setRetryTemplate(new RetryTemplate() {{
-	            setRetryPolicy(new AlwaysRetryPolicy());
-	            setBackOffPolicy(new FixedBackOffPolicy() {{
-	                setBackOffPeriod(1000); // back off for 1 second between retries
-	            }});
-	        }});
 	       return factory;
 	    }
 	
