@@ -12,12 +12,20 @@ public class ConsumerKafka implements AcknowledgingMessageListener<String, Strin
 	public void onMessage(ConsumerRecord<String, String> data,
 			Acknowledgment acknowledgment) {
 		// TODO Auto-generated method stub
-		 System.out.println("Read Record is : " + data.value());
-		 System.out.println("Offset is : " + data.offset());
-		 System.out.println("Topic is : " + data.topic());
-		 System.out.println("Partition is : " + data.partition());
+		try{
+			System.out.println("Read Record is : " + data.value());
+			 System.out.println("Offset is : " + data.offset());
+			 System.out.println("Topic is : " + data.topic());
+			 System.out.println("Partition is : " + data.partition());
+			 
+		}catch (Exception e ){
+			System.out.println("Push the messaged to Error Stream : " + e);
+		}finally{
+			acknowledgment.acknowledge();
+		}
+		 
 
-		 acknowledgment.acknowledge();
+		
 		
 	}
 }
