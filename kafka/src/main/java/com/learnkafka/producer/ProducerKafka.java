@@ -19,6 +19,8 @@ public class ProducerKafka {
 			
 			for(int i=1;i<250;i++){
 				myProducer.send(new  ProducerRecord<String, String>("my-fifth-topic", "Message Value : " + Integer.toString(i)));
+				myProducer.send(new  ProducerRecord<String, String>("my-fifth-topic", "url:<local-directory-path>/file"));
+
 				
 			}
 		} catch (Exception e) {
