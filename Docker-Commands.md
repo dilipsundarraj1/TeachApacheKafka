@@ -3,7 +3,7 @@
 Maven command :  
 
 ```
-clean package docker:build -t bootkafka:1.0
+clean package docker:build
 ```
 
 ## How to push a docker Image:
