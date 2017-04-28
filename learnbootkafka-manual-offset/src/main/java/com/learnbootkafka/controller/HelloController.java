@@ -20,7 +20,12 @@ public class HelloController {
 	@RequestMapping(value="/home")
 	public String getResult(@RequestParam("input") String value){
 		
+		try{
 			producer.sendMessage(value);
+		}catch(Exception e){
+			System.out.println("Inside Excotion");
+		}
+			
 		return env.getProperty("message.response");
 	}
 

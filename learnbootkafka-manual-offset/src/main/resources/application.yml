@@ -36,7 +36,7 @@ spring:
   profiles: prod
 
 message.response:   Hello from PROD spring boot properties
-kafka.broker: localhost:9092,localhost:9093,localhost:9094
+kafka.broker: 10.113.0.137:9092,10.113.0.137:9093,10.113.0.137:9094
 enable.auto.commit: false
 auto.commit.interval.ms:  100
 group.id: group1
