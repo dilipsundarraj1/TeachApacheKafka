@@ -3,7 +3,13 @@
 Maven command :  
 
 ```
-clean package docker:build
+clean package docker:build -t bootkafka:1.0
+```
+
+## How to check the docker images ?
+
+```
+docker images
 ```
 
 ## How to push a docker Image:
