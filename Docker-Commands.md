@@ -18,7 +18,7 @@ docker images
 docker run -it -p 8080:8080 --name bootkafka -e ENVIRONMENT=stage -e KAFKABROKER=localhost:9092  dilipthelip/learnbootkafka-manual-offset-docker
 ```
 
-## How to check the running containers ?
+## How to check the containers ?
 
 ```
 docker ps -a
