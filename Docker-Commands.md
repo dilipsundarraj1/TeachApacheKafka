@@ -64,6 +64,12 @@ docker push <image Name>
 docker run --name dockerboot -p 8080:8080 -e ENVIRONMENT=stage -e KAFKABROKER=172.17.0.3:9092 dilipthelip/learnbootkafka-manual-offset
 ```
 
+## Url to connect to the spring boot app:
+
+```
+http://localhost:8080/home?input=Hello
+```
+
 ## Setting needs to be done in VirtualBox
 
 Please have this settings done in your VirtualBox to connect to the docker container using the local host.
