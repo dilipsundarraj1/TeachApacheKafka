@@ -12,6 +12,12 @@ clean package docker:build -t bootkafka:1.0
 docker images
 ```
 
+## How to check the docker images ?
+
+```
+docker ps -a
+```
+
 ## How to push a docker Image:
 
 Step 1:  
