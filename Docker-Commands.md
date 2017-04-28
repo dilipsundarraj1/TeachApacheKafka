@@ -12,10 +12,34 @@ clean package docker:build -t bootkafka:1.0
 docker images
 ```
 
-## How to check the docker images ?
+## How to run the Docker Image?
+
+```
+docker run -it -p 8080:8080 --name bootkafka dilipthelip/learnbootkafka-manual-offset-docker
+```
+
+## How to check the running containers ?
 
 ```
 docker ps -a
+```
+
+## How to stop a container in Docker ?
+
+```
+docker stop <Container ID>
+```
+
+## How to remove a container in Docker ?
+
+```
+docker rm <Container ID>
+```
+
+## How to delete an image in Docker ?
+
+```
+docker rmi <Image Name>
 ```
 
 ## How to push a docker Image:
@@ -34,11 +58,6 @@ docker login
 docker push <image Name>
 ```
 
-## How to run the Docker Image?
-
-```
-docker run -it -p 8080:8080 --name bootkafka dilipthelip/learnbootkafka-manual-offset
-```
 
 ## Command  to run the Docker Image to connect to Kafka running in docker
 ```

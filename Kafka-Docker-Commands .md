@@ -46,7 +46,7 @@ docker inspect --format '{{ .NetworkSettings.IPAddress }}' kafka
 
 ```
 ZK_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' zookeeper)
-$ KAFKA_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' kafka)
+KAFKA_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' kafka)
 ```
 
 ```
