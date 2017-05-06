@@ -61,7 +61,7 @@ docker push <image Name>
 
 ## Command  to run the Docker Image to connect to Kafka running in docker
 ```
-docker run --name dockerboot -p 8080:8080 -e ENVIRONMENT=stage -e KAFKABROKER=172.17.0.3:9092 dilipthelip/learnbootkafka-manual-offset
+docker run --name dockerboot -p 8080:8080 -e ENVIRONMENT=stage -e KAFKABROKER=172.17.0.3:9092 dilipthelip/learnbootkafka-manual-offset-docker
 ```
 
 ## Url to connect to the spring boot app:
