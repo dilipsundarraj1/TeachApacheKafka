@@ -24,9 +24,10 @@ public class SparkKafkaConsumer {
 	
 	public static void main(String[] args) {
 		
-		SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("KafkaConsumer");
+		SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("KafkaConsumer"); // Initialize the Spark Context
 
-		JavaStreamingContext JavaSC = new JavaStreamingContext(sparkConf, Durations.seconds(10));
+
+		JavaStreamingContext javaSC = new JavaStreamingContext(sparkConf, Durations.seconds(10)); // Interval to stream the value from topic. Poll for records every 10 seconds.
 		
 		Map<String, Object> kafkaParams = new HashMap<String, Object>();
 		kafkaParams.put("bootstrap.servers", "localhost:9092");
@@ -40,28 +41,26 @@ public class SparkKafkaConsumer {
 
 		final JavaInputDStream<ConsumerRecord<String, String>> stream =
 		  KafkaUtils.createDirectStream(
-				  JavaSC,
+				  javaSC,
 		    LocationStrategies.PreferConsistent(),
 		    ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams)
 		  );
 		
 		stream.foreachRDD(rdd -> {
-		    System.out.println("--- New RDD with " + rdd.partitions().size()
+		    System.out.println("---RDD with " + rdd.partitions().size()
 		            + " partitions and " + rdd.count() + " records");
 		    rdd.foreach(record -> System.out.println(record.value()));
 		});
 		
 		System.out.println("Before Start");
-		JavaSC.start();
+		javaSC.start();
 		System.out.println("After Start");
 		 try {
-			 JavaSC.awaitTermination();
+			 javaSC.awaitTermination();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-
 		
 
 	}
