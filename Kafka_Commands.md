@@ -106,7 +106,7 @@ Example :
 
 **Windows:**
 ```
-kafka-console-producer.bat --broker-list localhost:9092 --topic <topic-name>
+kafka-console-producer.bat --zookeeper localhost:2181 --topic <topic-name> --from-beginning
 ```
 
 Example:  
