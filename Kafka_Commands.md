@@ -106,23 +106,23 @@ Example :
 
 **Windows:**
 ```
-kafka-console-producer.bat --zookeeper localhost:2181 --topic <topic-name> --from-beginning
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <topic-name> --from-beginning
 ```
 
 Example:  
 ```
-kafka-console-consumer.bat --zookeeper localhost:2181 --topic my-first-topic --from-beginning.
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-first-topic --from-beginning.
 
 ```
 
 **MAC**  
 ```
-./kafka-console-consumer.sh --zookeeper localhost:2181 --topic <topic-name> --from-beginning
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic-name> --from-beginning
 ```
 
 Example:  
 ```
-./kafka-console-consumer.sh --zookeeper localhost:2181 --topic my-first-topic --from-beginning
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-first-topic --from-beginning
 ```
 
 ## How to delete a topic?
