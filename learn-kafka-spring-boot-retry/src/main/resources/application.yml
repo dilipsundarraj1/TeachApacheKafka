@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: local
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      topic: my-first-topic2
+      group-id: my-first-topic-group
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      properties:
+        session.timeout.ms: 15000
+        ssl:
+          endpoint:
+            identification:
+              algorithm:
+        value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      poll-timeout: 3000
+      concurrency: 1
+      ack-mode: manual
+    retry:
+      generate-alert-retry-threshold: 3
+      backoff:
+        initial-interval: 10000
+        max-interval: 60000
